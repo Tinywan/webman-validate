@@ -1,8 +1,7 @@
-# validate
+# Webman Validate 插件
 
-[![license](https://img.shields.io/github/license/Tinywan/validate)]()
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-[![Build status](https://github.com/Tinywan/dnmp/workflows/CI/badge.svg)]()
+[![Latest Stable Version](http://poser.pugx.org/tinywan/validate/v)](https://packagist.org/packages/tinywan/validate)
+[![Total Downloads](http://poser.pugx.org/tinywan/validate/downloads)](https://packagist.org/packages/tinywan/validate)
 [![webman-event](https://img.shields.io/github/v/release/tinywan/validate?include_prereleases)]()
 [![webman-event](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![webman-event](https://img.shields.io/github/last-commit/tinywan/validate/main)]()
@@ -15,7 +14,7 @@
 ## 安装
 
 ```shell
-composer require tinywan/webman-validate
+composer require tinywan/validate
 ```
 
 ## 用法
@@ -24,34 +23,35 @@ composer require tinywan/webman-validate
 <?php
 namespace app\index\validate;
 
-use webman\Validate;
+use Tinywan\Validate\Validate;
 
 class UserValidate extends Validate
 {
     protected $rule =   [
         'name'  => 'require|max:25',
-        'age'   => 'number|between:1,120',
-        'email' => 'email',    
+        'age'   => 'require|number|between:1,120',
+        'email' => 'require|email'
     ];
-    
+
     protected $message  =   [
         'name.require' => '名称必须',
         'name.max'     => '名称最多不能超过25个字符',
+        'age.require'   => '年龄必须是数字',
         'age.number'   => '年龄必须是数字',
         'age.between'  => '年龄只能在1-120之间',
-        'email'        => '邮箱格式错误',    
+        'email.require'        => '邮箱必须是数字',
+        'email.email'        => '邮箱格式错误'
     ];
-    
 }
 ~~~
 
 验证器调用代码如下：
 ~~~php
 $data = [
-    'name'  => 'thinkphp',
-    'email' => 'thinkphp@qq.com',
+    'name'  => 'Tinywan',
+    'age'  => 24,
+    'email' => 'Tinywan@163.com'
 ];
-
 $validate = new \app\index\validate\UserValidate;
 
 if (!$validate->check($data)) {
