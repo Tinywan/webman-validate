@@ -5,7 +5,7 @@
 [![webman-event](https://img.shields.io/github/v/release/tinywan/validate?include_prereleases)]()
 [![webman-event](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![webman-event](https://img.shields.io/github/last-commit/tinywan/validate/main)]()
-[![webman-event](https://img.shields.io/github/v/tag/tinywan/-validate?color=ff69b4)]()
+[![webman-event](https://img.shields.io/github/v/tag/tinywan/validate?color=ff69b4)]()
 
 > 声明：由于官方的 [think-validate验证器](https://github.com/top-think/think-validate) 不兼容 `PHP8.0`。所以这里重复造轮子
 
