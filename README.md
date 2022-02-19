@@ -17,7 +17,7 @@
 composer require tinywan/validate
 ```
 
-## 用法
+## 基础用法
 
 ~~~php
 <?php
@@ -58,6 +58,19 @@ if (!$validate->check($data)) {
     var_dump($validate->getError());
 }
 ~~~
+
+## 助手函数（推荐）
+
+验证器调用代码如下：
+```php
+$data = [
+    'name'  => 'Tinywan',
+    'age'  => 24,
+    'email' => 'Tinywan@163.com'
+];
+validate($data, \app\index\validate\UserValidate::class . '.issue');
+```
+> 验证错误会自动抛出异常
 
 更多用法可以参考6.0完全开发手册的[验证](https://www.kancloud.cn/manual/thinkphp6_0/1037623)章节
 
