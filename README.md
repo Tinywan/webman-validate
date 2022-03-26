@@ -7,9 +7,7 @@
 [![webman-event](https://img.shields.io/github/last-commit/tinywan/validate/main)]()
 [![webman-event](https://img.shields.io/github/v/tag/tinywan/validate?color=ff69b4)]()
 
-> 声明：由于官方的 [think-validate验证器](https://github.com/top-think/think-validate) 不兼容 `PHP8.0`。所以这里重复造轮子
-
-基于PHP7.4 + 的Validate实现。基于ThinkPHP6修改的可用于 [webman](https://www.workerman.net/doc/webman/) 的通用validate数据验证器。
+基于ThinkPHP6修改的可用于 [webman](https://www.workerman.net/doc/webman/) 的通用validate数据验证器。
 
 ## 安装
 
