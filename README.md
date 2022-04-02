@@ -81,8 +81,7 @@ function validate(array $data, $validate = '', array $message = [], bool $batch 
         if (strpos($validate, '.')) {
             [$validate, $scene] = explode('.', $validate);
         }
-        $class = false !== strpos($validate, '\\') ? $validate : $validate;
-        $v = new $class();
+        $v = new $validate();
         if (!empty($scene)) {
             $v->scene($scene);
         }
