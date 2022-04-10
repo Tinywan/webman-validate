@@ -7,9 +7,6 @@
 declare (strict_types = 1);
 
 use Tinywan\Validate\Validate;
-use function is_array;
-use function strpos;
-use function explode;
 
 if (!function_exists('validate')) {
     /**
