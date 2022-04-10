@@ -10,8 +10,8 @@ class Install
      * @var array
      */
     protected static $pathRelation = array (
-  'config/plugin/tinywan/validate' => 'config/plugin/tinywan/validate',
-);
+      'config/plugin/tinywan/validate' => 'config/plugin/tinywan/validate',
+    );
 
     /**
      * Install
@@ -66,5 +66,4 @@ class Install
             remove_dir($path);
         }
     }
-    
 }

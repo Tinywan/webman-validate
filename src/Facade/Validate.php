@@ -71,6 +71,6 @@ class Validate
      */
     public static function __callStatic($name, $arguments)
     {
-        return static::instance()->connection('default')->{$name}(... $arguments);
+        return static::$_instance()->{$name}(...$arguments);
     }
 }

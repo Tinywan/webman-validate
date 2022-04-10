@@ -59,36 +59,6 @@ if (!$validate->check($data)) {
 
 ## 助手函数（推荐）
 
-自定义函数 `functions.php` 添加`validate()`函数
-
-```php
-/**
- * @desc 验证器助手函数
- * @param array $data 数据
- * @param string|array $validate 验证器类名或者验证规则数组
- * @param array $message 错误提示信息
- * @param bool $batch 是否批量验证
- * @param bool $failException 是否抛出异常
- * @return bool
- * @author Tinywan(ShaoBo Wan)
- */
-function validate(array $data, $validate = '', array $message = [], bool $batch = false, bool $failException = true)
-{
-    if (is_array($validate)) {
-        $v = new \Tinywan\Validate\Validate();
-        $v->rule($validate);
-    } else {
-        if (strpos($validate, '.')) {
-            [$validate, $scene] = explode('.', $validate);
-        }
-        $v = new $validate();
-        if (!empty($scene)) {
-            $v->scene($scene);
-        }
-    }
-    return $v->message($message)->batch($batch)->failException($failException)->check($data);
-}
-```
 验证器调用代码如下：
 ```php
 $data = [
@@ -96,7 +66,7 @@ $data = [
     'age'  => 24,
     'email' => 'Tinywan@163.com'
 ];
-validate($data, \app\index\validate\UserValidate::class . '.issue');
+validate($data, \app\index\validate\UserValidate::class);
 ```
 > 验证错误会自动抛出异常
 

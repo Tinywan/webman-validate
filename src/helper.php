@@ -4,13 +4,15 @@
  * @author Tinywan(ShaoBo Wan)
  * @date 2022/02/17 20:26
  */
-
 declare (strict_types = 1);
 
 namespace Tinywan\Validate;
+
+use Tinywan\Validate\Validate;
 use function is_array;
 use function strpos;
 use function explode;
+
 
 if (!function_exists('validate')) {
     /**
@@ -20,9 +22,9 @@ if (!function_exists('validate')) {
      * @param array $message 错误提示信息
      * @param bool $batch 是否批量验证
      * @param bool $failException 是否抛出异常
-     * @return Validate
+     * @return  bool
      */
-    function validate(array $data, $validate = '', array $message = [], bool $batch = false, bool $failException = true): Validate
+    function validate(array $data, $validate = '', array $message = [], bool $batch = false, bool $failException = true):bool
     {
         if (is_array($validate)) {
             $v = new Validate();
@@ -31,15 +33,12 @@ if (!function_exists('validate')) {
             if (strpos($validate, '.')) {
                 [$validate, $scene] = explode('.', $validate);
             }
-            $class = false !== strpos($validate, '\\') ? $validate : $validate;
-            $v = new $class();
+            $v = new $validate();
             if (!empty($scene)) {
                 $v->scene($scene);
             }
         }
 
-        $v->message($message);
-        $v->batch($batch);
-        return $v->failException($failException)->check($data);
+        return $v->message($message)->batch($batch)->failException($failException)->check($data);
     }
 }

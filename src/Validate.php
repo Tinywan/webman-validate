@@ -4,7 +4,6 @@
  * @author Tinywan(ShaoBo Wan)
  * @date 2022/02/17 20:26
  */
-
 declare (strict_types = 1);
 
 namespace Tinywan\Validate;
