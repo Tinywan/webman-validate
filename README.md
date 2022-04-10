@@ -50,7 +50,7 @@ $data = [
     'age'  => 24,
     'email' => 'Tinywan@163.com'
 ];
-$validate = new \app\index\validate\UserValidate;
+$validate = new app\index\validate\UserValidate;
 
 if (!$validate->check($data)) {
     var_dump($validate->getError());
