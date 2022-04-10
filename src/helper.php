@@ -11,7 +11,6 @@ use function is_array;
 use function strpos;
 use function explode;
 
-
 if (!function_exists('validate')) {
     /**
      * 生成验证对象
