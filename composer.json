@@ -1,7 +1,15 @@
 {
   "name": "tinywan/validate",
+  "description": "validate for webman plugin",
+  "keywords": ["validate", "webman", "plugin"],
   "type": "library",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Tinywan",
+      "email": "756684177@qq.com"
+    }
+  ],
   "require": {
     "php": ">=7.4"
   },
