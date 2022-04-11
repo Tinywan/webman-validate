@@ -8,6 +8,9 @@ declare (strict_types = 1);
 
 namespace Tinywan\Validate\Facade;
 
+use Webman\Bootstrap;
+use Workerman\Worker;
+
 /**
  * @see \Tinywan\Validate\Validate
  * @package \Tinywan\Validate\Facade
@@ -66,12 +69,25 @@ namespace Tinywan\Validate\Facade;
  * @method static array|string getError() 获取错误信息
  * @method static bool __call(string $method, array $args) 动态方法 直接调用is方法进行验证
  */
-class Validate
+class Validate implements Bootstrap
 {
     /**
      * @var \Tinywan\Validate\Validate | null $_instance
      */
-    protected static $_instance = null;
+    protected static ?\Tinywan\Validate\Validate $_instance = null;
+
+    /**
+     * @desc: start 描述
+     * @param Worker $worker
+     * @return void
+     * @author Tinywan(ShaoBo Wan)
+     */
+    public static function start($worker)
+    {
+        if ($worker) {
+            static::$_instance = new \Tinywan\Validate\Validate();
+        }
+    }
 
     /**
      * @param $name

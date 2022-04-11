@@ -44,6 +44,7 @@ class UserValidate extends Validate
 ~~~
 
 验证器调用代码如下：
+
 ~~~php
 $data = [
     'name'  => 'Tinywan',
@@ -59,7 +60,6 @@ if (!$validate->check($data)) {
 
 ## 助手函数（推荐）
 
-验证器调用代码如下：
 ```php
 $data = [
     'name'  => 'Tinywan',
@@ -69,6 +69,23 @@ $data = [
 validate($data, \app\index\validate\UserValidate::class);
 ```
 > 验证错误会自动抛出异常
+
+## 使用面板Facade
+
+```php
+$validate = \Tinywan\Validate\Facade\Validate::rule('age', 'number|between:1,120')
+    ->rule([
+        'name'  => 'require|max:25',
+        'email' => 'email'
+    ]);
+$data = [
+    'name'  => 'tinywan',
+    'email' => 'tinywan@gmail.com'
+];
+if (!$validate->check($data)) {
+    var_dump($validate->getError());
+}
+```
 
 更多用法可以参考6.0完全开发手册的[验证](https://www.kancloud.cn/manual/thinkphp6_0/1037623)章节
 
