@@ -17,11 +17,11 @@ use function preg_replace;
 class Str
 {
 
-    protected static $snakeCache = [];
+    protected static array $snakeCache = [];
 
-    protected static $camelCache = [];
+    protected static array $camelCache = [];
 
-    protected static $studlyCache = [];
+    protected static array $studlyCache = [];
 
     /**
      * 检查字符串中是否包含某些字符串

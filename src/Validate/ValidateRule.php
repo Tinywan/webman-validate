@@ -5,7 +5,7 @@
  * @date 2022/02/17 20:26
  */
 
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace Tinywan\Validate\Validate;
 
@@ -32,7 +32,7 @@ namespace Tinywan\Validate\Validate;
  * @method ValidateRule allowIp(mixed $rule, string $msg = '') static 验证IP许可
  * @method ValidateRule denyIp(mixed $rule, string $msg = '') static 验证IP禁用
  * @method ValidateRule regex(mixed $rule, string $msg = '') static 使用正则验证数据
- * @method ValidateRule token(mixed $rule='__token__', string $msg = '') static 验证表单令牌
+ * @method ValidateRule token(mixed $rule = '__token__', string $msg = '') static 验证表单令牌
  * @method ValidateRule is(mixed $rule, string $msg = '') static 验证字段值是否为有效格式
  * @method ValidateRule isRequire(mixed $rule = null, string $msg = '') static 验证字段必须
  * @method ValidateRule isNumber(mixed $rule = null, string $msg = '') static 验证字段值是否为数字
@@ -72,23 +72,23 @@ namespace Tinywan\Validate\Validate;
 class ValidateRule
 {
     // 验证字段的名称
-    protected $title;
+    protected string $title;
 
     // 当前验证规则
-    protected $rule = [];
+    protected array $rule = [];
 
     // 验证提示信息
-    protected $message = [];
+    protected array $message = [];
 
     /**
      * 添加验证因子
      * @access protected
-     * @param  string    $name  验证名称
-     * @param  mixed     $rule  验证规则
-     * @param  string    $msg   提示信息
+     * @param string $name 验证名称
+     * @param mixed $rule 验证规则
+     * @param string $msg 提示信息
      * @return $this
      */
-    protected function addItem(string $name, $rule = null, string $msg = '')
+    protected function addItem(string $name, $rule = null, string $msg = ''): ValidateRule
     {
         if ($rule || 0 === $rule) {
             $this->rule[$name] = $rule;
@@ -136,7 +136,7 @@ class ValidateRule
      * @access public
      * @return $this
      */
-    public function title(string $title)
+    public function title(string $title): ValidateRule
     {
         $this->title = $title;
 

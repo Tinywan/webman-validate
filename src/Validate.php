@@ -11,6 +11,7 @@ namespace Tinywan\Validate;
 use Closure;
 use Tinywan\Validate\Exception\ValidateException;
 use Tinywan\Validate\Helper\Str;
+use Webman\File;
 use Webman\Http\Request;
 use Tinywan\Validate\Validate\ValidateRule;
 
@@ -24,13 +25,13 @@ class Validate
      * 自定义验证类型
      * @var array
      */
-    protected $type = [];
+    protected array $type = [];
 
     /**
      * 验证类型别名
      * @var array
      */
-    protected $alias = [
+    protected array $alias = [
         '>' => 'gt', '>=' => 'egt', '<' => 'lt', '<=' => 'elt', '=' => 'eq', 'same' => 'eq',
     ];
 
@@ -38,25 +39,25 @@ class Validate
      * 当前验证规则
      * @var array
      */
-    protected $rule = [];
+    protected array $rule = [];
 
     /**
      * 验证提示信息
      * @var array
      */
-    protected $message = [];
+    protected array $message = [];
 
     /**
      * 验证字段描述
      * @var array
      */
-    protected $field = [];
+    protected array $field = [];
 
     /**
      * 默认规则提示
      * @var array
      */
-    protected $typeMsg = [
+    protected array $typeMsg = [
         'require'     => ':attribute require',
         'must'        => ':attribute must',
         'number'      => ':attribute must be numeric',
@@ -113,13 +114,13 @@ class Validate
      * 当前验证场景
      * @var string
      */
-    protected $currentScene;
+    protected string $currentScene;
 
     /**
      * 内置正则验证规则
      * @var array
      */
-    protected $defaultRegex = [
+    protected array $defaultRegex = [
         'alpha'       => '/^[A-Za-z]+$/',
         'alphaNum'    => '/^[A-Za-z0-9]+$/',
         'alphaDash'   => '/^[A-Za-z0-9\-\_]+$/',
@@ -136,7 +137,7 @@ class Validate
      * Filter_var 规则
      * @var array
      */
-    protected $filter = [
+    protected array $filter = [
         'email'   => FILTER_VALIDATE_EMAIL,
         'ip'      => [FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6],
         'integer' => FILTER_VALIDATE_INT,
@@ -149,7 +150,7 @@ class Validate
      * 验证场景定义
      * @var array
      */
-    protected $scene = [];
+    protected array $scene = [];
 
     /**
      * 验证失败错误信息
@@ -161,48 +162,48 @@ class Validate
      * 是否批量验证
      * @var bool
      */
-    protected $batch = false;
+    protected bool $batch = false;
 
     /**
      * 验证失败是否抛出异常
      * @var bool
      */
-    protected $failException = false;
+    protected bool $failException = false;
 
     /**
      * 场景需要验证的规则
      * @var array
      */
-    protected $only = [];
+    protected array $only = [];
 
     /**
      * 场景需要移除的验证规则
      * @var array
      */
-    protected $remove = [];
+    protected array $remove = [];
 
     /**
      * 场景需要追加的验证规则
      * @var array
      */
-    protected $append = [];
+    protected array $append = [];
 
     /**
      * 验证正则定义
      * @var array
      */
-    protected $regex = [];
+    protected array $regex = [];
 
     /**
      * 请求对象
      * @var Request
      */
-    protected $request;
+    protected Request $request;
 
     /**
      * @var Closure[]
      */
-    protected static $maker = [];
+    protected static array $maker = [];
 
     /**
      * 构造方法
@@ -268,7 +269,7 @@ class Validate
      * @param string|null $message 验证失败提示信息
      * @return $this
      */
-    public function extend(string $type, callable $callback = null, string $message = null)
+    public function extend(string $type, callable $callback = null, string $message = null): Validate
     {
         $this->type[$type] = $callback;
 
@@ -922,17 +923,17 @@ class Validate
             $ext = explode(',', $ext);
         }
 
-        return in_array(strtolower($file->extension()), $ext);
+        return in_array(strtolower($file->getExtension()), $ext);
     }
 
     /**
      * 检测上传文件大小
      * @access public
      * @param File    $file
-     * @param integer $size 最大大小
+     * @param int $size 最大大小
      * @return bool
      */
-    protected function checkSize(File $file, $size): bool
+    protected function checkSize(File $file, int $size): bool
     {
         return $file->getSize() <= (int) $size;
     }
@@ -950,7 +951,7 @@ class Validate
             $mime = explode(',', $mime);
         }
 
-        return in_array(strtolower($file->getMime()), $mime);
+        return in_array(strtolower((string)$file->getMTime()), $mime);
     }
 
     /**
