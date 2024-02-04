@@ -114,7 +114,7 @@ class Validate
      * 当前验证场景
      * @var string
      */
-    protected string $currentScene;
+    protected string $currentScene = '';
 
     /**
      * 内置正则验证规则
