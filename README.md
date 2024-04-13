@@ -25,13 +25,13 @@ use Tinywan\Validate\Validate;
 
 class UserValidate extends Validate
 {
-    protected $rule =   [
+    protected array $rule =   [
         'name'  => 'require|max:25',
         'age'   => 'require|number|between:1,120',
         'email' => 'require|email'
     ];
 
-    protected $message  =   [
+    protected array $message  =   [
         'name.require' => '名称必须',
         'name.max'     => '名称最多不能超过25个字符',
         'age.require'   => '年龄必须是数字',
