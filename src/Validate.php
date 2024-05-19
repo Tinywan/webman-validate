@@ -9,6 +9,8 @@ declare (strict_types = 1);
 namespace Tinywan\Validate;
 
 use Closure;
+use support\Db;
+use support\Model;
 use Tinywan\Validate\Exception\ValidateException;
 use Tinywan\Validate\Helper\Str;
 use Webman\File;
@@ -986,7 +988,7 @@ class Validate
             // 指定模型类
             $db = new $rule[0];
         } else {
-            $db = $this->db->name($rule[0]);
+            $db = Db::table($rule[0]);
         }
 
         $key = $rule[1] ?? $field;
@@ -1006,7 +1008,7 @@ class Validate
             $map = [];
         }
 
-        $pk = !empty($rule[3]) ? $rule[3] : $db->getPk();
+        $pk = !empty($rule[3]) ? $rule[3] : ($db instanceof Model ? $db->getKeyName() : 'id');
 
         if (is_string($pk)) {
             if (isset($rule[2])) {
@@ -1016,7 +1018,7 @@ class Validate
             }
         }
 
-        if ($db->where($map)->field($pk)->find()) {
+        if ($db->where($map)->first()) {
             return false;
         }
 
