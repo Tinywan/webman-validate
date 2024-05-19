@@ -970,12 +970,13 @@ class Validate
     /**
      * 验证是否唯一
      * @access public
+     * @param mixed  $value 字段值
      * @param mixed  $rule  验证规则 格式：数据表,字段名,排除ID,主键名
      * @param array  $data  数据
      * @param string $field 验证字段名
      * @return bool
      */
-    public function unique($rule, array $data = [], string $field = ''): bool
+    public function unique($value, $rule, array $data = [], string $field = ''): bool
     {
         if (is_string($rule)) {
             $rule = explode(',', $rule);
