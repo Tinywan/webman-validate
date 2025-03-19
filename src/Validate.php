@@ -271,7 +271,7 @@ class Validate
      * @param string|null $message 验证失败提示信息
      * @return $this
      */
-    public function extend(string $type, callable $callback = null, string $message = null): Validate
+    public function extend(string $type, callable $callback = null, ?string $message = null): Validate
     {
         $this->type[$type] = $callback;
 
@@ -289,7 +289,7 @@ class Validate
      * @param string|null $msg 验证提示信息
      * @return void
      */
-    public function setTypeMsg($type, string $msg = null): void
+    public function setTypeMsg($type, ?string $msg = null): void
     {
         if (is_array($type)) {
             $this->typeMsg = array_merge($this->typeMsg, $type);
