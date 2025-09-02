@@ -271,7 +271,7 @@ class Validate
      * @param string|null $message 验证失败提示信息
      * @return $this
      */
-    public function extend(string $type, callable $callback = null, ?string $message = null): Validate
+    public function extend(string $type, ?callable $callback = null, ?string $message = null): Validate
     {
         $this->type[$type] = $callback;
 
