@@ -84,7 +84,7 @@ class Str
      * @param  string $addChars
      * @return string
      */
-    public static function random(int $length = 6, int $type = null, string $addChars = ''): string
+    public static function random(int $length = 6, ?int $type = null, string $addChars = ''): string
     {
         $str = '';
         switch ($type) {
