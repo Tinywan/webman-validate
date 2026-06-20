@@ -16,8 +16,8 @@ use Workerman\Worker;
  * @package \Tinywan\Validate\Facade
  * @mixin \Tinywan\Validate\Validate
  * @method static \Tinywan\Validate\Validate rule(string|array $name, mixed $rule = '') 添加字段验证规则
- * @method static \Tinywan\Validate\Validate extend(string $type, callable $callback = null, string $message = null) 注册验证（类型）规则
- * @method static void setTypeMsg(string|array $type, string $msg = null) 设置验证规则的默认提示信息
+ * @method static \Tinywan\Validate\Validate extend(string $type, ?callable $callback = null, ?string $message = null) 注册验证（类型）规则
+ * @method static void setTypeMsg(string|array $type, ?string $msg = null) 设置验证规则的默认提示信息
  * @method static Validate message(array $message) 设置提示信息
  * @method static \Tinywan\Validate\Validate scene(string $name) 设置验证场景
  * @method static bool hasScene(string $name) 判断是否存在某个验证场景

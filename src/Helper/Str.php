@@ -115,7 +115,7 @@ class Str
             $str = substr($chars, 0, $length);
         } else {
             for ($i = 0; $i < $length; $i++) {
-                $str .= mb_substr($chars, floor(mt_rand(0, mb_strlen($chars, 'utf-8') - 1)), 1);
+                $str .= mb_substr($chars, (int)floor(mt_rand(0, mb_strlen($chars, 'utf-8') - 1)), 1);
             }
         }
         return $str;
@@ -162,7 +162,7 @@ class Str
      * @param  int|null $length
      * @return string
      */
-    public static function substr(string $string, int $start, int $length = null): string
+    public static function substr(string $string, int $start, ?int $length = null): string
     {
         return mb_substr($string, $start, $length, 'UTF-8');
     }
