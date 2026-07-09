@@ -14,11 +14,12 @@ if (!function_exists('validate')) {
      * @param array $data 数据
      * @param string|array $validate 验证器类名或者验证规则数组
      * @param array $message 错误提示信息
+     * @param string $scene 设置场景
      * @param bool $batch 是否批量验证
      * @param bool $failException 是否抛出异常
      * @return  bool
      */
-    function validate(array $data, $validate = '', array $message = [], bool $batch = false, bool $failException = true):bool
+    function validate(array $data, $validate = '', array $message = [], bool $batch = false, bool $failException = true, string $scene = ''):bool
     {
         if (is_array($validate)) {
             $v = new Validate();
@@ -33,6 +34,6 @@ if (!function_exists('validate')) {
             }
         }
 
-        return $v->message($message)->batch($batch)->failException($failException)->check($data);
+        return $v->message($message)->batch($batch)->failException($failException)->scene($scene)->check($data);
     }
 }
